@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace AlertMessenger
 {
@@ -16,6 +17,12 @@ namespace AlertMessenger
             builder.card.Title = title;
             builder.card.Body = body;
             return builder;
+        }
+
+        public CardBuilder AddHighlight(Color color)
+        {
+            card.Highlight = color;
+            return this;
         }
 
         public Card Build()

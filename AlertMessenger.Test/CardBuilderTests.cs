@@ -1,5 +1,6 @@
 using System;
 using Xunit;
+using System.Drawing;
 
 namespace AlertMessenger.Test
 {
@@ -18,7 +19,7 @@ namespace AlertMessenger.Test
             var card = CardBuilder
                 .Create("Hello World")
                 .Build();
-            Assert.Equal("Hello World" , card.Title);
+            Assert.Equal("Hello World", card.Title);
         }
 
         [Fact]
@@ -27,13 +28,23 @@ namespace AlertMessenger.Test
             var card = CardBuilder
                 .Create("Title", "Hello World Body")
                 .Build();
-            Assert.Equal("Hello World Body",card.Body); 
+            Assert.Equal("Hello World Body", card.Body);
+        }
+
+        [Fact]
+        public void AddHighlightSetHighlightColour()
+        {
+            var card = CardBuilder
+                .Create()
+                .AddHighlight(Color.Red)
+                .Build();
+            Assert.Equal(Color.Red, card.Highlight);
         }
 
         [Fact]
         public void BuildReturnsCard()
         {
-            var card = 
+            var card =
                 CardBuilder
                     .Create()
                     .Build();
