@@ -13,12 +13,31 @@ namespace AlertMessenger.Test
         }
 
         [Fact]
+        public void CreateSetsTitle()
+        {
+            var card = CardBuilder
+                .Create("Hello World")
+                .Build();
+            Assert.Equal("Hello World" , card.Title);
+        }
+
+        [Fact]
+        public void CreateSetsBody()
+        {
+            var card = CardBuilder
+                .Create("Title", "Hello World Body")
+                .Build();
+            Assert.Equal("Hello World Body",card.Body); 
+        }
+
+        [Fact]
         public void BuildReturnsCard()
         {
-            var builder = 
-                CardBuilder.Create()
-                .Build();
-            Assert.True(builder is Card);
+            var card = 
+                CardBuilder
+                    .Create()
+                    .Build();
+            Assert.True(card is Card);
         }
     }
 }
