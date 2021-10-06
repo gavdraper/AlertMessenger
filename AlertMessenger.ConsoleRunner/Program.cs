@@ -13,9 +13,16 @@ namespace AlertMessenger.ConsoleRunner
                 .Create("My Title", "My Body")
                 .AddHighlight(Color.Red)
                 //.AddLinkAction("View Info","http://google.com");
+                // .AddPostAction("Add Comment")
+                //     .AddInput(InputType.Text, "txtComment")
+                //     .AddInput(InputType.Text, "txtUser")
+                //     .AddSubmit("Save")
+                //     .BuildAction()
+                //.AddImage("imageUrl")
+                //.AddDateTime()
                 .Build();
             var teamsSender = new TeamsAlerter("http://myTeamsEndpoint.com");
-            teamsSender.Send(card);
+            teamsSender.SendAsync(card).Wait();
             
         }
     }
