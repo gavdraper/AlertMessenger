@@ -1,6 +1,8 @@
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AlertMessenger.Alerters
@@ -15,26 +17,29 @@ namespace AlertMessenger.Alerters
             this.endpointUri = endpointUri;
         }
 
+        private class TeamsCard
+        {
+            [JsonPropertyName("@context")]
+            public string Context{get;} = "https://schema.org/extensions";
+            [JsonPropertyName("type")]
+            public string Type{get;} = "MessageCard";
+            public string ThemeColor{get;set;} = "7ED810";
+            public string Title{get;set;} 
+            public string Text{get;set;}
+            public TeamsCard(Card card)
+            {
+                Title = card.Title;
+                Text = card.Body;
+            }
+        }
+
         public async Task SendAsync(Card card)
         {
-            //Todo Replace with serialized Card
-            var msg =
-                      "{" +
-                      "   \"@context\": \"https://schema.org/extensions\"," +
-                      "   \"@type\": \"MessageCard\"," +
-                      "   \"themeColor\": \"7ED810\", " +
-                      "   \"title\": \"Alert Over\"," +
-                      "   \"text\": \"Alert Text Goes Here!\"," +
-                      "   \"potentialAction\": [" +
-                      "     {" +
-                      "      \"@type\": \"OpenUri\"," +
-                      "      \"name\": \"Learn More\"," +
-                      "      \"targets\": [{ \"os\": \"default\", \"uri\": \"http://google.com\" }]" +
-                      "     }" +
-                      "    ]" +
-                      "}";
-            var httpContent = new StringContent(msg, Encoding.UTF8, "application/json");
-            var url = @"https://MyEndpoint";
+            var cardJson = JsonSerializer.Serialize(new TeamsCard(card));
+            Console.WriteLine(cardJson);
+            var httpContent = new StringContent(cardJson, Encoding.UTF8, "application/json");
+            //Todo load this from config...
+            var url = @"myUrl";
             var response = client.PostAsync(url, httpContent).Result;
             var responseString = await response.Content.ReadAsStringAsync();
             Console.WriteLine(response.StatusCode);
