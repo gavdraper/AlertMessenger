@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace AlertMessenger
+namespace AlertMessenger.MessageCard
 {
     public class LinkAction
     {

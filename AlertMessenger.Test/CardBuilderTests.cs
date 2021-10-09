@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using System.Drawing;
+using AlertMessenger.MessageCard;
 
 namespace AlertMessenger.Test
 {

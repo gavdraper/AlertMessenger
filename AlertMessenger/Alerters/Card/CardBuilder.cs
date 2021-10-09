@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace AlertMessenger
+namespace AlertMessenger.MessageCard
 {
     public class CardBuilder
     {
@@ -27,8 +27,18 @@ namespace AlertMessenger
 
         public CardBuilder AddLinkAction(string actionText, string url)
         {
-            card.LinkActions.Add(new LinkAction(actionText,url));
+            card.LinkActions.Add(new LinkAction(actionText, url));
             return this;
+        }
+
+        public CardBuilder AddImage(string url)
+        {
+            return this;
+        }
+
+        public PostActionBuilder AddPostAction(string actionText, string url)
+        {
+            return new PostActionBuilder(this);
         }
 
         public Card Build()
