@@ -25,6 +25,12 @@ namespace AlertMessenger
             return this;
         }
 
+        public CardBuilder AddLinkAction(string actionText, string url)
+        {
+            card.LinkActions.Add(new LinkAction(actionText,url));
+            return this;
+        }
+
         public Card Build()
         {
             return card;

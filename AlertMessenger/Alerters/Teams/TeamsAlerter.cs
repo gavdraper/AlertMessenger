@@ -2,10 +2,9 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace AlertMessenger.Alerters
+namespace AlertMessenger.Alerters.Teams
 {
     public class TeamsAlerter : IAlerter
     {
@@ -15,23 +14,6 @@ namespace AlertMessenger.Alerters
         public TeamsAlerter(string endpointUri)
         {
             this.endpointUri = endpointUri;
-        }
-
-        private class TeamsCard
-        {
-            [JsonPropertyName("@context")]
-            public string Context{get;} = "https://schema.org/extensions";
-            [JsonPropertyName("type")]
-            public string Type{get;} = "MessageCard";
-            public string ThemeColor{get;set;} = "7ED810";
-            public string Title{get;set;} 
-            public string Text{get;set;}
-            public TeamsCard(Card card)
-            {
-                Title = card.Title;
-                Text = card.Body;
-                ThemeColor = $"{card.Highlight.R:X2}{card.Highlight.G:X2}{card.Highlight.B:X2}";
-            }
         }
 
         public async Task SendAsync(Card card)
@@ -44,7 +26,5 @@ namespace AlertMessenger.Alerters
             var responseString = await response.Content.ReadAsStringAsync();
             Console.WriteLine(response.StatusCode);
         }
-
-
     }
 }

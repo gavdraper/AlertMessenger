@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using AlertMessenger.Alerters;
+using AlertMessenger.Alerters.Teams;
 
 namespace AlertMessenger.ConsoleRunner
 {
@@ -10,9 +11,12 @@ namespace AlertMessenger.ConsoleRunner
         {
             //Stubb Usage flow....
             var card = CardBuilder
-                .Create("My Title", "My Body")
+                .Create("FAKE Disk Alert", "MyServer.Domain.Int C Drive < 10%")
                 .AddHighlight(Color.Red)
-                //.AddLinkAction("View Info","http://google.com");
+                .AddLinkAction("Open Google","http://google.com")
+                .AddLinkAction("Open Yahoo","http://yahoo.com")
+                .Build();
+
                 // .AddPostAction("Add Comment")
                 //     .AddInput(InputType.Text, "txtComment")
                 //     .AddInput(InputType.Text, "txtUser")
@@ -20,8 +24,7 @@ namespace AlertMessenger.ConsoleRunner
                 //     .BuildAction()
                 //.AddImage("imageUrl")
                 //.AddDateTime()
-                .Build();
-            var teamsSender = new TeamsAlerter("http://myTeamsEndpoint.com");
+            var teamsSender = new TeamsAlerter("http://MyTeamsChannelEndpoint");
             teamsSender.SendAsync(card).Wait();
             
         }
