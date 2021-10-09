@@ -30,6 +30,7 @@ namespace AlertMessenger.Alerters
             {
                 Title = card.Title;
                 Text = card.Body;
+                ThemeColor = $"{card.Highlight.R:X2}{card.Highlight.G:X2}{card.Highlight.B:X2}";
             }
         }
 
@@ -39,8 +40,7 @@ namespace AlertMessenger.Alerters
             Console.WriteLine(cardJson);
             var httpContent = new StringContent(cardJson, Encoding.UTF8, "application/json");
             //Todo load this from config...
-            var url = @"myUrl";
-            var response = client.PostAsync(url, httpContent).Result;
+            var response = client.PostAsync(endpointUri, httpContent).Result;
             var responseString = await response.Content.ReadAsStringAsync();
             Console.WriteLine(response.StatusCode);
         }
