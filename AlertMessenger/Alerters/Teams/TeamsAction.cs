@@ -19,7 +19,7 @@ namespace AlertMessenger.Alerters.Teams
         }]
     */
 
-    internal class ActionInput
+    public class ActionInput
     {
         [JsonPropertyName("@type")]
         public string Type { get; } = "TextInput";
@@ -34,7 +34,7 @@ namespace AlertMessenger.Alerters.Teams
         }
     }
 
-    internal class ActionCard
+    public class ActionCard
     {
         [JsonPropertyName("@type")]
         public string Type { get; } = "ActionCard";
@@ -49,12 +49,12 @@ namespace AlertMessenger.Alerters.Teams
 
     }
 
-    internal class TeamsAction
+    public class TeamsAction
     {
         [JsonPropertyName("@type")]
         public string Type { get; }
         public string Name { get; }
-        public IList<TeamsTarget> Targets { get; } = new List<TeamsTarget>();
+        internal IList<TeamsTarget> Targets { get; } = new List<TeamsTarget>();
 
         public TeamsAction(string type, string actionText, string url)
         {

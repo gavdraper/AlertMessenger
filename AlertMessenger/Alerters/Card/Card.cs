@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Drawing;
+using AlertMessenger.Alerters.Teams;
 
 namespace AlertMessenger.MessageCard
 {
     public class LinkAction
     {
-        public string ActionText { get; }
-        public string Url { get; }
+        internal string ActionText { get; }
+        internal string Url { get; }
 
         public LinkAction(string actionText, string url)
         {
@@ -20,6 +21,7 @@ namespace AlertMessenger.MessageCard
         public string Body { get; set; }
         public Color Highlight { get; set; }
         public IList<LinkAction> LinkActions{get;} = new List<LinkAction>();
+        public IList<ActionCard> ActionCards{get;} = new List<ActionCard>();
 
     }
 }

@@ -38,7 +38,7 @@ namespace AlertMessenger.MessageCard
 
         public PostActionBuilder AddPostAction(string actionText, string url)
         {
-            return new PostActionBuilder(this);
+            return new PostActionBuilder(this, card, url, actionText);
         }
 
         public Card Build()
