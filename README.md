@@ -17,4 +17,6 @@ var teamsSender = new TeamsAlerter("https://TeamsChannelUrl");
 await teamsSender.SendAsync(card);
 ```
 
+The result of the above code looks something like this...
+
 ![Screenshot of Teams Message](sample.png)
