@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using AlertMessenger.MessageCard;
 
 namespace AlertMessenger.Alerters.Teams
 {
@@ -9,10 +10,18 @@ namespace AlertMessenger.Alerters.Teams
         public string Type { get; } = "ActionCard";
         public string Name { get;  }
         public IList<TeamsActionInput> Inputs{get;} = new List<TeamsActionInput>();
-        public IList<TeamsAction> Actions{get;} = new List<TeamsAction>();
-        public TeamsActionCard(string name)
+        public IList<TeamsActionCardAction> Actions{get;} = new List<TeamsActionCardAction>();
+        public TeamsActionCard(ActionCard card)
         {
-            Name = name;
+            this.Name = card.Name;
+            foreach(var i in card.Inputs)
+            {
+                Inputs.Add(new TeamsActionInput(i));
+            }
+            foreach(var a in card.Actions)
+            {
+                Actions.Add(new TeamsActionCardAction(a));
+            }
         }
 
     }

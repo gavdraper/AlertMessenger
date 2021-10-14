@@ -3,7 +3,6 @@ using System.Text.Json.Serialization;
 
 namespace AlertMessenger.Alerters.Teams
 {
-
     public class TeamsAction
     {
         [JsonPropertyName("@type")]
@@ -15,12 +14,7 @@ namespace AlertMessenger.Alerters.Teams
         {
             Type = type;
             Name = actionText;
-            if (type == "OpenUri")
-            {
-                Targets.Add(new TeamsTarget("default", url));
-            }
-            else 
-            if (type == "HttpPOST")
+            if (Type == "OpenUri")
             {
                 Targets.Add(new TeamsTarget("default", url));
             }

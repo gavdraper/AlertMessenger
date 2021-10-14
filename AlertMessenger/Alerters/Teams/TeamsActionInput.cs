@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using AlertMessenger.MessageCard;
 
 namespace AlertMessenger.Alerters.Teams
 {
@@ -10,10 +11,10 @@ namespace AlertMessenger.Alerters.Teams
         public bool isMultiline{get;} = false;
         public string Title{get;}
 
-        public TeamsActionInput(string title)
+        public TeamsActionInput(ActionCardInput input)
         {
-            Title=title;
-            Id = title.Replace(" ","");
+            Title=input.Title;
+            Id = input.Title.Replace(" ","");
         }
     }
 }

@@ -28,7 +28,7 @@ namespace AlertMessenger.Alerters.Teams
             //Todo Card Shold have Generic ActionCard Not Teams One
             foreach(var l in card.ActionCards)
             {
-                PotentialAction.Add(l);
+                PotentialAction.Add(new TeamsActionCard(l));
             }
         }
     }
