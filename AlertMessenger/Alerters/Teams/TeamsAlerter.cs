@@ -17,6 +17,22 @@ namespace AlertMessenger.Alerters.Teams
             this.endpointUri = endpointUri;
         }
 
+            /*
+      "@type": "ActionCard",
+        "name": "Add a comment",
+        "inputs": [{
+            "@type": "TextInput",
+            "id": "comment",
+            "isMultiline": false,
+            "title": "Add a comment here for this task"
+        }],
+        "actions": [{
+            "@type": "HttpPOST",
+            "name": "Add comment",
+            "target": "https://docs.microsoft.com/outlook/actionable-messages"
+        }]
+    */
+
         public async Task SendAsync(Card card)
         {
             var cardJson = JsonSerializer.Serialize(new TeamsCard(card));

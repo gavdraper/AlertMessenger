@@ -6,7 +6,7 @@ namespace AlertMessenger.MessageCard
     {
         private CardBuilder cardBuilder;
         private readonly Card card;
-        private readonly ActionCard actionCard;
+        private readonly TeamsActionCard actionCard;
 
         public PostActionBuilder(
             CardBuilder cardBuilder, 
@@ -16,14 +16,14 @@ namespace AlertMessenger.MessageCard
         {
             this.cardBuilder = cardBuilder;
             this.card = card;
-            actionCard = new ActionCard(ActionText.Replace(" ",""));
-            actionCard.Actions.Add(new TeamsAction("Post",ActionText,Url));
+            actionCard = new TeamsActionCard(ActionText.Replace(" ",""));
+            actionCard.Actions.Add(new TeamsAction("HttpPOST",ActionText,Url));
         }
 
         public PostActionBuilder AddInput(string type, string name)
         {
             actionCard.Inputs.Add(
-                new ActionInput(name)
+                new TeamsActionInput(name)
             );
             return this;
         }

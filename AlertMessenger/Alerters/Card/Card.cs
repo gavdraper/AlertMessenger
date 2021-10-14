@@ -21,7 +21,7 @@ namespace AlertMessenger.MessageCard
         public string Body { get; set; }
         public Color Highlight { get; set; }
         public IList<LinkAction> LinkActions{get;} = new List<LinkAction>();
-        public IList<ActionCard> ActionCards{get;} = new List<ActionCard>();
+        public IList<TeamsActionCard> ActionCards{get;} = new List<TeamsActionCard>();
 
     }
 }

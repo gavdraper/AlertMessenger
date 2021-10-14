@@ -1,6 +1,6 @@
 namespace AlertMessenger.Alerters.Teams
 {
-    internal class TeamsTarget
+    public class TeamsTarget
     {
         public string Os { get; }
         public string Uri { get; }

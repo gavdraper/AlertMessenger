@@ -13,7 +13,7 @@ namespace AlertMessenger.Alerters.Teams
         public string ThemeColor { get; set; } = "7ED810";
         public string Title { get; set; }
         public string Text { get; set; }
-        public IList<TeamsAction> PotentialAction { get; } = new List<TeamsAction>();
+        public IList<dynamic> PotentialAction { get; } = new List<dynamic>();
         public TeamsCard(Card card)
         {
             Title = card.Title;
@@ -24,6 +24,11 @@ namespace AlertMessenger.Alerters.Teams
                 PotentialAction.Add(
                     new TeamsAction("OpenUri", l.ActionText, l.Url)
                 );
+            }
+            //Todo Card Shold have Generic ActionCard Not Teams One
+            foreach(var l in card.ActionCards)
+            {
+                PotentialAction.Add(l);
             }
         }
     }
