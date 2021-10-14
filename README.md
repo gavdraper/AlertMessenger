@@ -16,3 +16,5 @@ var card = CardBuilder
 var teamsSender = new TeamsAlerter("https://TeamsChannelUrl");
 await teamsSender.SendAsync(card);
 ```
+
+![Screenshot of Teams Message](sample.png)
