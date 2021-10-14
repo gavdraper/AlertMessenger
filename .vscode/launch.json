@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/AlertMessenger.Test/bin/Debug/net5.0/AlertMessenger.Test.dll",
+            "program": "${workspaceFolder}/AlertMessenger.ConsoleRunner/bin/Debug/net5.0/AlertMessenger.ConsoleRunner.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/AlertMessenger.Test",
+            "cwd": "${workspaceFolder}/AlertMessenger.ConsoleRunner",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
